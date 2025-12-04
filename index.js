@@ -5,14 +5,6 @@ import bcrypt from "bcrypt"
 
 const { DB_HOST, DB_DATABASE, DB_USER, DB_PASSWORD } = process.env;
 
-const database = mysql2.createPool({
-    host: DB_HOST,
-    database: DB_DATABASE,
-    user: DB_USER,
-    password: DB_PASSWORD,
-    connectionLimit: 10
-})
-
 const app = express()
 const port = 3333
 
@@ -131,4 +123,12 @@ app.post("/cadastrar", async (request, response) => {
 
 app.listen(port, () => {
     console.log(`Server running on port ${port}!`);
+})
+
+const database = mysql2.createPool({
+    host: DB_HOST,
+    database: DB_DATABASE,
+    user: DB_USER,
+    password: DB_PASSWORD,
+    connectionLimit: 10
 })
