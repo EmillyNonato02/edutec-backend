@@ -90,8 +90,8 @@ app.post("/login", async (request, response) => {
 });
 
 app.post("/cadastrar", async (request, response) => {
-    // A desestruturação atual está correta:
-    const { text, name, email, password } = request.body; 
+    // CORREÇÃO: Desestruture diretamente do request.body
+    const { text, name, email, password } = request.body;
 
     if (!text || !name || !email || !password) {
         return response.status(400).json({ message: "Todos os campos são obrigatórios." });
